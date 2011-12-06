@@ -1,0 +1,35 @@
+     private void browseTo(final File aDirectory){ 
+          if (aDirectory.isDirectory()){ 
+               this.currentDirectory = aDirectory; 
+               fill(aDirectory.listFiles()); 
+          }else{ 
+               OnClickListener okButtonListener = new OnClickListener(){ 
+                    // @Override 
+                    public void onClick(DialogInterface arg0, int arg1) { 
+                              // Lets start an intent to View the file, that was clicked... 
+                              openFile(aDirectory); 
+                    } 
+               }; 
+               OnClickListener cancelButtonListener = new OnClickListener(){ 
+                    // @Override 
+                    public void onClick(DialogInterface arg0, int arg1) { 
+                         // Do nothing 
+                    } 
+               }; 
+               AlertDialog.show(this,"Question", "Do you want to open that file?\n" 
+                                        + aDirectory.getName(), 
+                                        "OK", okButtonListener, 
+                                        "Cancel", cancelButtonListener, false, null); 
+          } 
+     }
+
+
+
+
+
+
+
+			               AlertDialog alertDialog = new AlertDialog.Builder(this.ctx).create();
+			               alertDialog.setTitle("title");
+			               alertDialog.setMessage("message");
+			               alertDialog.show();

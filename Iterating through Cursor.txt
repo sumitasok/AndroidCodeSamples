@@ -1,0 +1,18 @@
+	Cursor alarmedCursor = mDbHelper.fetchAlarmByStatus(AlarmMeDbAdapter.KEY_STATUS_ALARMED);
+
+	alarmedCursor.moveToFirst();
+	while (alarmedCursor.moveToNext()) {
+		Log.d(LOG_ALARM, "inside do while loop");
+		Log.d(LOG_ALARM, "Data : "
+				+ alarmedCursor.getString(alarmedCursor.getColumnIndex("reason")));
+	}
+
+
+
+		if(mCursor != null) {
+			do {
+				long id = (long) Integer.parseInt(mCursor.getString(mCursor.getColumnIndex("_id")));
+				updateAlarmDb(id, 
+						KEY_STATUS, KEY_STATUS_SKIPPED);
+			} while(mCursor.moveToNext());
+		}

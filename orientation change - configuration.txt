@@ -1,0 +1,24 @@
+
+	@Override
+	public void onConfigurationChanged(Configuration _newConfig) {
+		super.onConfigurationChanged(_newConfig);
+		
+		if (_newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+			Toast toast = Toast.makeText(this, "test orientation_landscape",
+					Toast.LENGTH_LONG);
+			toast.show();
+		}
+
+		if (_newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+			Toast toast = Toast.makeText(this, "test orientation_portrait",
+					Toast.LENGTH_LONG);
+			toast.show();
+			setContentView(R.layout.proceed);
+		}
+	}
+
+
+
+To set the orientation unchanged: android manifest .xml
+------------------------------------------------------
+android:screenOrientation="portrait"

@@ -1,0 +1,12 @@
+public class AlarmedList extends ListActivity {
+
+	Cursor alarmedCursor = mDbHelper.fetchAlarmByStatus(AlarmMeDbAdapter.KEY_STATUS_ALARMED);
+	startManagingCursor(alarmedCursor);
+
+	String[] from = new String[] { AlarmDbDO._REASON, AlarmDbDO._SET_AT_STR, AlarmDbDO._SET_TO_STR };
+	int[] to = new int[] { R.id.reason, R.id.set_at_val, R.id.set_to_val };
+				
+	SimpleCursorAdapter alarmed = new SimpleCursorAdapter(this, R.layout.alarm_row, alarmedCursor, from, to);
+
+	setListAdapter(alarmed);
+}

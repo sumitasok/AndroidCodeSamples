@@ -1,0 +1,26 @@
+myListView.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
+  @Override public void onCreateContextMenu(ContextMenu menu, final View v, ContextMenuInfo menuInfo) {
+   menu.add("Make Toast")
+    .setOnMenuItemClickListener(new OnMenuItemClickListener() {
+     @Override public boolean onMenuItemClick(MenuItem item) {
+      String toastText = "You clicked position " + ((ListView)v).getSelectedItemPosition();
+      Toast.makeText(DisplayScheduleActivity.this, toastText, Toast.LENGTH_SHORT).show();
+      return true;
+     }
+    });
+  } 
+ });
+
+
+
+mArrivalsList.setOnItemLongClickListener(new OnItemLongClickListener() {
+  @Override public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
+   // record position/id/whatever here
+   return false;
+  }
+ });
+
+
+
+
+http://stackoverflow.com/questions/2321332/detecting-which-selected-item-in-a-listview-spawned-the-contextmenu-android

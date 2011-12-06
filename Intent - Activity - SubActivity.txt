@@ -1,0 +1,62 @@
+			Intent intent = new Intent(AlarmMe.this, DoYouWantToContinue.class);
+			startActivityForResult(intent, RESET_ALARM_HMS_SUB_ACTIVITY);
+
+
+---------------------------CATCHING THE RESULT FROM NEXT ACTIVITY BACK IN THE CALLING ACTIVITY---------------------------------------------------------------------------
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+		super.onActivityResult(requestCode, resultCode, data);
+		switch (requestCode) {
+		case RESET_ALARM_HMS_SUB_ACTIVITY:
+
+			if (resultCode == Activity.RESULT_OK) {
+				// YOUR CODE GOES HERE
+			}
+			break;
+		case RESET_ALARM_TIMEPICKER_SUB_ACTIVITY:
+
+			if (resultCode == Activity.RESULT_CANCEL) {
+				// YOUR CODE GOES HERE
+			}
+			break;
+		}
+	}
+
+-------------------------IN THE OTHER FILE---------------------------------------------------------------------------------
+
+
+We can add multiple entries here. This is a key,value pair. So to receive this data from the receiving activity we have to write this code
+
+Bundle extras = getIntent().getExtras(); 
+if(extras !=null)
+{
+	String value = extras.getString("keyName");
+}
+
+		okButton = (Button) findViewById(R.id.set_time_ok);
+		okButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent result = new Intent();
+				result.putExtra("Set_At", set_at);
+				result.putExtra("Set_to", set_to);
+				setResult(RESULT_OK, result);
+				finish();
+
+			}
+		});
+		
+		cancelButton = (Button) findViewById(R.id.set_time_cancel);
+		cancelButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				setResult(RESULT_CANCELED);
+				finish();
+			}
+		});
+
+	}

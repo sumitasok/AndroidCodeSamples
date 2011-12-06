@@ -1,0 +1,36 @@
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+
+		boolean result = super.onCreateOptionsMenu(menu);
+		menu.add(0, REMOVE_ALARM_MENU_ID, 0, "remove alarm");
+		menu.add(0, HIDE_MENU_ID, 0, "hide to back");
+
+		return result;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case REMOVE_ALARM_MENU_ID:
+			if (IS_ALARM_SET) {
+				cda.cancel();
+				IS_ALARM_SET = false;
+				whenTime.setText("Cancelled");
+			} else {
+				Toast toast = Toast.makeText(this,
+						"You dont have any alarm set", Toast.LENGTH_SHORT);
+				toast.show();
+			}
+			break;
+		case HIDE_MENU_ID:
+			if (IS_ALARM_SET) {
+				Toast toast = Toast.makeText(this,
+						"We will alert  you on time", Toast.LENGTH_LONG);
+				toast.show();
+			}
+			moveTaskToBack(true);
+			break;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+

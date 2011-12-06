@@ -1,0 +1,17 @@
+Not yet functional.
+
+
+	public Vibrator myVibratorService;
+	public static final int COLLISION_VIBRATE_MILLIS = 50;
+
+
+
+
+		// Do a short (100ms) vibration.
+		myVibratorService = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+		myVibratorService.vibrate(100);
+		// myVibratorService.vibrate(
+		// new long[]{0l, COLLISION_VIBRATE_MILLIS,
+		// 50l, COLLISION_VIBRATE_MILLIS,
+		// 50l, COLLISION_VIBRATE_MILLIS},
+		// -1);

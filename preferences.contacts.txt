@@ -1,0 +1,13 @@
+CREATE TABLE phone_lookup (data_id INTEGER PRIMARY KEY REFERENCES data(_id) NOT NULL,
+			raw_contact_id INTEGER REFERENCES raw_contacts(_id) NOT NULL,
+			normalized_number TEXT NOT NULL
+		-------indexphone_lookup_indexphone_lookup
+
+CREATE INDEX phone_lookup_index ON phone_lookup(normalized_number, raw_contact_id, data_id)-----tablename_lookupname_lookup_
+CRETAE TABLE name_lookup (data_id INTEGER REFERENCE data(_id) NOT NULL,
+			raw_contact_id INTEGER REFERENCES raw_contacts(_id) NOT NULL,
+			normalised_name TEXT NOT NULL,
+			name_type INTEGER NOT NULL,
+			PRIMARY KEY ( data_id, normalized_name, name_type))-------indexsqlite_autoindex_name_lookup_1name_lookup-------?indexname_loopup_indexname_lookup-
+CRETAE INDEX name_lookup_index ON name_lookup (normalized_name, name_type, raw_contact_id)------- indexname_lookup_raw_contact_id_indexname_lookup-CREATE INDEX name_lookup_raw_contact_id_index ON name_lookup( raw_contact_id)
+				

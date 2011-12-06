@@ -1,0 +1,47 @@
+public class TimeKeeperStartActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);	// inside main lies the ListView
+
+		ListView tv = (ListView) findViewById(R.id.list);
+		TimeKeeper tmk = new TimeKeeper(this, R.id.alarm_reason, al);	// alarm_reason lies inside alarm_row.xml
+		tv.setAdapter(tmk);
+	}
+}
+
+class TimeKeeper extends ArrayAdapter<Alarm> {
+
+	private ArrayList<Alarm> items;
+	private Context context;
+
+	public TimeKeeper(Context context, int textViewResourceId,
+			ArrayList<Alarm> items) {
+		super(context, textViewResourceId, items);
+		this.context = context;
+		this.items = items;
+	}
+
+	public View getView(int position, View convertView, ViewGroup parent) {
+		View view = convertView;
+		if (view == null) {
+			LayoutInflater inflater = (LayoutInflater) context
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			view = inflater.inflate(R.layout.alarm_row, null);
+		}
+
+		Alarm item = (items).get(position);
+		if (item != null) {
+			// My layout has only one TextView
+			TextView itemView = (TextView) view.findViewById(R.id.alarm_reason);
+			if (itemView != null) {
+				// do whatever you want with your string and long
+				itemView.setText(String.format("%s\n\t%d", item.reason,
+						item.remaining_secs));
+			}
+		}
+
+		return view;
+	}
+}

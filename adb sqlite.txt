@@ -1,0 +1,7 @@
+adb -e shell
+
+# sqlite3 /data/data/com.sumit.alarmme.activity/databases/alarmme.db "sql command"
+
+.dump	dump all tables + contents
+
+.schema

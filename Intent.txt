@@ -1,0 +1,20 @@
+Intent intent = new Intent("com.sumit.intent.action.ACTIVITY_NAME");
+startActivity(intent);
+
+--------------------------------------------------------------------
+
+Intent intent = new Intent(Intent.ACTION_VIEW);
+intent.setData(Uri.parse("http;//www.google.com"));
+startActivity(intent);
+
+
+
+Intent.ACTION_WEB_SEARCH
+setData -> http://www.google.com
+
+Intent.ACTION_CALL
+("tel:555-555-5555");
+
+Intent.ACTION_VIEW
+("geo:0,0?z=4&q=city-query-string")
+// geo:0,0? z= zoom & q = query-string

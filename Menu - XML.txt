@@ -1,0 +1,57 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<!-- This group uses the default category. -->
+	<group android:id="@+id/menuGroup_Main">
+		<item android:id="@+id/menu_testPick"
+		android:orderInCategory="5"
+		android:title="Test Pick" />
+		<item android:id="@+id/menu_testGetContent"
+		android:orderInCategory="5"
+		android:title="Test Get Content" />
+		<item android:id="@+id/menu_clear"
+		android:orderInCategory="10"
+		android:title="clear" />
+		<item android:id="@+id/menu_dial"
+		android:orderInCategory="7"
+		android:title="dial" />
+		<item android:id="@+id/menu_test"
+		android:orderInCategory="4"
+		android:title="@+string/test" />
+		<item android:id="@+id/menu_show_browser"
+		android:orderInCategory="5"
+		android:title="show browser" />
+	</group>
+</menu>
+
+
+@Override
+public boolean onCreateOptionsMenu(Menu menu)
+{
+MenuInflater inflater = getMenuInflater(); //from activity
+inflater.inflate(R.menu.menu1, menu);
+}
+
+
+private void onOptionsItemSelected (MenuItem item)
+{
+this.appendMenuItemText(item);
+if (item.getItemId() == R.id.menu_clear)
+{
+this.emptyText();
+}
+else if (item.getItemId() == R.id.menu_dial)
+{
+this.dial();
+}
+else if (item.getItemId() == R.id.menu_testPick)
+{
+IntentsUtils.invokePick(this);
+}
+else if (item.getItemId() == R.id.menu_testGetContent)
+{
+IntentsUtils.invokeGetContent(this);
+}
+else if (item.getItemId() == R.id.menu_show_browser)
+{
+IntentsUtils.tryOneOfThese(this);
+}
+}

@@ -1,0 +1,50 @@
+public class AlarmMe extends Activity implements OnClickListener {
+
+
+--------------------------------------------------------------------------------------------------------------
+
+
+
+
+		mTimePickerButton = (Button) findViewById(R.id.timePickerButton);
+		mTimePickerButton.setOnClickListener(this);
+		// button on User time Selection
+		mSetMinutesButton = (Button) findViewById(R.id.setMinutesButton);
+		mSetMinutesButton.setOnClickListener(this);
+
+
+
+--------------------------------------------------------------------------------------------------------------
+
+
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.setMinutesButton:
+			getTimeFromEditText();
+			break;
+		case R.id.timePickerButton:
+			if (!IS_ALARM_SET) {
+				Log
+						.d(AlarmMe,
+								"TimePickerButton.onClick, No previous alarm, set new Alarm");
+				showDialog(TIMEPICKER_DIALOG_ID);
+			} else {
+				Log
+						.d(AlarmMe,
+								"TimePickerButton.onClick, Alarm is already set");
+
+				Intent intent = new Intent(AlarmMe.this,
+						DoYouWantToContinue.class);
+				startActivityForResult(intent,
+						RESET_ALARM_TIMEPICKER_SUB_ACTIVITY);
+
+			}
+
+			break;
+		default:
+			break;
+		}
+
+	}
